@@ -59,16 +59,78 @@ add_action( 'init', 'create_post_type_modal' );
 
 
 
+/*__________メタボックスの追加__________*/
+
+function modal_custom_metabox() {
+    add_meta_box(
+        'modal_metabox', // メタボックスのID
+        'モーダルボタンのテキスト：', // メタボックスのタイトル
+        'modal_metabox_callback', // コールバック関数
+        'modal' // このメタボックスを表示する投稿タイプ
+    );
+}
+add_action('add_meta_boxes', 'modal_custom_metabox');
+
+function modal_metabox_callback($post) {
+    $value = get_post_meta($post->ID, 'modal_meta_key', true);
+    echo '<input type="text" id="modal_metabox_input" name="modal_metabox_input" value="' . esc_attr($value) . '" />';
+}
+
+
+
+/*__________メタボックスの保存__________*/
+
+function save_modal_metabox($post_id) {
+    if (array_key_exists('modal_metabox_input', $_POST)) {
+        update_post_meta(
+            $post_id,
+            'modal_meta_key',
+            $_POST['modal_metabox_input']
+        );
+    }
+}
+add_action('save_post', 'save_modal_metabox');
+
+
+
 /*__________ショートコード__________*/
 
 function open_modal_shortcode($atts) {
 	ob_start(); // Start output buffering to capture all subsequent output
 	$modal_id = $atts[0]; // Get the slug from the shortcode attributes
+
+	$args = array(
+        'post_type' => 'modal',
+        'name' => $atts[0],
+        'post_status' => 'publish',
+        'posts_per_page' => 1
+    );
+
+    // 新しい WP_Query オブジェクトを作成します
+    $modal_query = new WP_Query($args);
+    $custom_text = "";
+
+	// ループを開始します
+    if ($modal_query->have_posts()) {
+        while($modal_query->have_posts()) {
+            $modal_query->the_post();
+            $custom_text = get_post_meta(get_the_ID(), 'modal_meta_key', true); // メタデータを取得します
+        }
+    }
+    wp_reset_postdata();
 	?>
 
 	<div class="open-modal">
 		<input id="modalCheck-<?php echo $modal_id; ?>" type="checkbox">
-		<label for="modalCheck-<?php echo $modal_id; ?>" class="open">開く</label>
+		<label for="modalCheck-<?php echo $modal_id; ?>" class="open">
+			<?php
+			if($custom_text){
+                echo $custom_text; 
+            }else{
+                echo '開く';
+            }
+			?>
+		</label>
 		<div class="open-modal-content">
 			<div class="open-modal-content-inner">
 				<label for="modalCheck-<?php echo $modal_id; ?>" class="close">&times;</label>
