@@ -1,0 +1,60 @@
+/*!***************************************************************************************************************************************************************************************************************************************!*\
+  !*** css ./node_modules/css-loader/dist/cjs.js??ruleSet[1].rules[4].use[1]!./node_modules/postcss-loader/dist/cjs.js??ruleSet[1].rules[4].use[2]!./node_modules/sass-loader/dist/cjs.js??ruleSet[1].rules[4].use[3]!./src/style.scss ***!
+  \***************************************************************************************************************************************************************************************************************************************/
+@charset "UTF-8";
+/*表示画面のSCSS*/
+.open-modal > input {
+  display: none;
+}
+.open-modal .open {
+  display: block;
+  width: 60px;
+  line-height: 40px;
+  text-align: center;
+  cursor: pointer;
+  border: solid 1px #333;
+  color: #333;
+  font-weight: bold;
+  text-decoration: none;
+  margin: 0;
+  font-size: 14px;
+}
+.open-modal-content {
+  opacity: 0;
+  visibility: hidden;
+  position: fixed;
+  z-index: 101;
+  left: 0;
+  top: 0;
+  width: 100%;
+  height: 100%;
+  background-color: rgba(0, 0, 0, 0.7);
+  transition: 0.3s;
+}
+.open-modal-content-inner {
+  background-color: #fff;
+  width: 80%;
+  max-width: 800px;
+  min-height: 400px;
+  margin: auto;
+  margin-top: 15%;
+  padding: 4%;
+  border-radius: 20px;
+}
+.open-modal-content-inner .close {
+  color: #000000;
+  float: right;
+  font-size: 28px;
+}
+.open-modal-content-inner .close:hover,
+.open-modal-content-inner .close:focus {
+  color: #000;
+  text-decoration: none;
+  cursor: pointer;
+}
+.open-modal > input:checked ~ .open-modal-content {
+  opacity: 1;
+  visibility: visible;
+}
+
+/*# sourceMappingURL=style-index.css.map*/
