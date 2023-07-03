@@ -1,6 +1,6 @@
 <?php
 /**
- * Plugin Name:       PF Modal
+ * Plugin Name:       PF Modal Edit
  * Description:       【PF純正プラグイン】モーダル画面を追加します。
  * Version:           0.1.0
  * Requires at least: 6.1
@@ -170,3 +170,16 @@ function my_enqueue_scripts() {
     wp_enqueue_script('add-script', plugins_url('add-script.js', __FILE__), array('jquery'), '1.0.0', true);
 }
 add_action('wp_enqueue_scripts', 'my_enqueue_scripts');
+
+
+/*__________ブロックパターンを追加：モーダル画面用__________*/
+register_block_pattern_category('modal', ['label' => 'modal']);
+register_block_pattern(
+	'modal',
+	array(
+		'title'       => __( 'modal1' ),
+		'categories'  => ["modal"],
+		'content'     => '
+		aaa'
+	)
+);
