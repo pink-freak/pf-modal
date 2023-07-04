@@ -1,6 +1,6 @@
 <?php
 /**
- * Plugin Name:       PF Modal Edit
+ * Plugin Name:       PF Modal
  * Description:       【PF純正プラグイン】モーダル画面を追加します。
  * Version:           0.1.0
  * Requires at least: 6.1
@@ -120,7 +120,7 @@ function open_modal_shortcode($atts) {
     wp_reset_postdata();
 	?>
 
-	<div class="open-modal">
+	<div class="pf-open-modal">
 		<input id="modalCheck-<?php echo $modal_id; ?>" type="checkbox">
 		<label for="modalCheck-<?php echo $modal_id; ?>" class="open">
 			<?php
@@ -131,8 +131,8 @@ function open_modal_shortcode($atts) {
             }
 			?>
 		</label>
-		<div class="open-modal-content">
-			<div class="open-modal-content-inner">
+		<div class="pf-open-modal-content">
+			<div class="pf-open-modal-content-inner">
 				<label for="modalCheck-<?php echo $modal_id; ?>" class="close">&times;</label>
 				<?php
 				$args = array(
@@ -161,7 +161,7 @@ function open_modal_shortcode($atts) {
 	<?php
 	return ob_get_clean(); // Return the buffered output
 }
-add_shortcode('modal', 'open_modal_shortcode');
+add_shortcode('pf-modal', 'open_modal_shortcode');
 
 
 /*__________追加JSの読み込み__________*/

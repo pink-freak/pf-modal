@@ -3,10 +3,10 @@
   \***************************************************************************************************************************************************************************************************************************************/
 @charset "UTF-8";
 /*表示画面のSCSS*/
-.open-modal > input {
+.pf-open-modal > input {
   display: none;
 }
-.open-modal .open {
+.pf-open-modal .open {
   display: block;
   width: 100%;
   line-height: 40px;
@@ -19,7 +19,7 @@
   margin: 0;
   font-size: 14px;
 }
-.open-modal-content {
+.pf-open-modal-content {
   opacity: 0;
   visibility: hidden;
   position: fixed;
@@ -31,7 +31,7 @@
   background-color: rgba(0, 0, 0, 0.7);
   transition: 0.3s;
 }
-.open-modal-content-inner {
+.pf-open-modal-content-inner {
   background-color: #fff;
   width: 80%;
   max-width: 800px;
@@ -41,18 +41,18 @@
   padding: 4%;
   border-radius: 20px;
 }
-.open-modal-content-inner .close {
+.pf-open-modal-content-inner .close {
   color: #000000;
   float: right;
   font-size: 28px;
 }
-.open-modal-content-inner .close:hover,
-.open-modal-content-inner .close:focus {
+.pf-open-modal-content-inner .close:hover,
+.pf-open-modal-content-inner .close:focus {
   color: #000;
   text-decoration: none;
   cursor: pointer;
 }
-.open-modal > input:checked ~ .open-modal-content {
+.pf-open-modal > input:checked ~ .pf-open-modal-content {
   opacity: 1;
   visibility: visible;
 }

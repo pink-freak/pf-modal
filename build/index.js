@@ -147,7 +147,7 @@ function Save({
   const blockProps = _wordpress_block_editor__WEBPACK_IMPORTED_MODULE_1__.useBlockProps.save();
   return (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_0__.createElement)("div", {
     ...blockProps
-  }, attributes.selectedSlug && `[modal ${attributes.selectedSlug}]`);
+  }, attributes.selectedSlug && `[pf-modal ${attributes.selectedSlug}]`);
 }
 
 /***/ }),

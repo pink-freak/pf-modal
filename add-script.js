@@ -2,10 +2,10 @@
 
 // モーダル画面の領域外をクリックするとモーダルが閉じる
 document.addEventListener('DOMContentLoaded', function() {
-	var modals = document.querySelectorAll('.open-modal-content');
+	var modals = document.querySelectorAll('.pf-open-modal-content');
 	
 	modals.forEach(function(modal) {
-	  var modalInner = modal.querySelector('.open-modal-content-inner');
+	  var modalInner = modal.querySelector('.pf-open-modal-content-inner');
 	  
 	  // 領域外クリックのイベントハンドラー
 	  modal.addEventListener('click', function(event) {
